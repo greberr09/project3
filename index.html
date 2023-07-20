@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>EV Studies</title>
+
+    <!-- Bootstrap CSS styling -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <!-- Our CSS styling-->
+    <!-- CSS for the Leaflet map -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <style>
+      .col-md-5 {
+        width: 390px;
+        height: 350px;
+      }
+    </style>
+    <style>
+      .leafletMap {
+        height: 485px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 jumbotron text-center">
+          <h1>Electric Vehicle Studies</h1>
+          <p>Use the interactive charts below to explore EV's in the USA</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="leafletMap">
+          <!-- The div that holds our Leaflet map -->
+          <div id="leafletMap"></div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- The div that holds our Line Chart if we use chart.js to create it-->
+        <div class="col-md-5">
+          <div>
+            <canvas id="lineChart"></canvas>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <!-- The div that holds the Bubble Chart using chart.js -->
+          <div>
+            <canvas id="bubbleChart"></canvas>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <!-- The div that holds the Bar Chart using chart.js -->
+          <div>
+            <canvas id="barChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <!--Chart.js  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- D3 JavaScript -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Plotly JS -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- Our JavaScript -->
+    <script type="text/javascript" src="static/js/logic.js"></script>
+  </body>
+</html>
