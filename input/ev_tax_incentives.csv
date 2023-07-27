@@ -1,2 +1,19 @@
-bill_number,bill_name,jurisdiction,date_enacted,effective_date,incentive_type,max_credit_amount_new,max_credit_amount_used,max_vehicle-cost,made_in_US_only,eligibility_requirements,eligbile_models,vehicle_acquisition_date,restrictions
-Public Law 117-169,Inflation Reduction Act of 2022,federal,16-Aug-22,,,,,,,,,,
+bill_number,bill_name,jurisdiction,date_enacted,effective_date,incentive_type,max_credit_amount_new,max_credit_amount_used,max_vehicle_cost_new,max_vehicle-cost_used,made_in_US_only,eligibility_requirements,eligible_models,vehicle_acquisition_date,provisions
+Public Law 117-169,Inflation Reduction Act of 2022,federal,16-Aug-22,17-Aug-22,ev_tax_credit,"7,500","4,000","80,000","25,000",yes,yes,,17-Aug-22,"Lifts 200,000 vehicle per manufactuer limit and adds used vehicles as of 1/1/2023. Additional requirements for vehicles placed in service after Aug 1, 2022, Jan 1, 2023, and April 17, 2023 on household income and battery life and materials"
+Public Law 117-58,Infrastructure Investment and Jobs Act of 2021,federal,15-Nov-21,,ev_tax_credit,"7,500",NA,,,no,yes,"Purchased after 12/31/2009.  Manufacturer has sold fewer than 200,000 vehicles in the U.S.",,Designates a national ev charging station and alternate fuels refueling program along national highway corridors
+Public Law 116-260,Consolidated Appropriations Act of 2021 ,federal,17-Dec-20,,,"7,500",NA,,,,,,,
+Public Law 116-94,Further Consolidated Appropriates Act of 2020 ,federal,20-Dec-19,,,"7,500",NA,,,,,,,"Tesla and GM reached 200,000 threshold limit at end of 2019"
+Public Law 114-113,Consolidated Appropriations Act of 2016,federal,18-Dec-15,,,"7,500",NA,,,,,,,
+Public Law 113-295,Tax Increase Prevention Act of 2014,federal,19-Dec-14,,,"7,500",NA,,,,,,,
+Public Law 112-240,American Taxpayer Relief Act of 2012,federal,2-Jan-13,,,"7,500",NA,,,,,,,
+Public Law 111-132,"Tax Relief, Unemployment Insurance Reauthorization, and Job Creaton Act of 2010",federal,17-Dec-11,1/1/2011,ev_tax_credit,"7,500",NA,,,,,,,this change in amount is from an earlier bill but effective as of 2011.
+Public Law 111-5,American Recovery and Reinvestment Act of 2009,federal,17-Feb-09,,,"3,400",NA,,,,,,,
+Public Law 110-343,Energy Improvement and Extension Act of 2008,federal,3-Oct-08,,,"3,400",NA,,,,,,,
+Public Law 110-140,Energy Independence and Security Act of 2007,federal,19-Dec-07,,,"3,400",NA,,,,,,,First increase in fuel effeciency standards since 1975.  Incentives to build hybrids.
+Public Law 109-58,Energy Policy Act of 2005,federal,8-Aug-05,,ev_tax_credit,"3,400",NA,,,no,yes,EV and PHEV purchased after 12/31/2005 and before 12/31/2010,,"Phased out after a manufacturer sells 60,000 vehicles in the U.S."
+Public Law 102-486,Energy Polciy Act of 1992,federal,24-Oct-92,,,,,,,,,,,
+Public Law 102-240,Surface Transportation Acts,federal,18-Dec-91,,,,,,,,,,,
+Public Law101-549,Clean Air Amendments Act of 1990,federal,15-Nov-90,,,,,,,,,,,
+Public Law 100-494,Altermative Motor Fuels At,federal,14-Oct-88,,,,,,,,,,,
+Public Law 94-163,Energy Policy and Conservation Act of 1975,federal,22-Dec-75,,,,,,,,,,,
+Public Law 91-604,Clean Air Act of 1970,federal,31-Dec-70,,,,,,,,,,,
