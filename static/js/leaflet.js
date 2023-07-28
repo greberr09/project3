@@ -256,288 +256,209 @@ d3.json(stationUrl).then(function(stationData) {
 
 
 
-// Energy 2 axis line chart
+// // Energy 2 axis line chart
 
-// Look at energy DB for oil/electric data
-const energyUrl = 'http://127.0.0.1:8000/energy';
-// const dataPromise = d3.json(url);
-// console.log("Data Promise: ", dataPromise);
+// // Look at energy DB for oil/electric data
+// const energyUrl = 'http://127.0.0.1:8000/energy';
+// // const dataPromise = d3.json(url);
+// // console.log("Data Promise: ", dataPromise);
 
-d3.json(energyUrl).then(function(data) {
-    //  console.log("JSON output", data);
+// d3.json(energyUrl).then(function(data) {
+//     //  console.log("JSON output", data);
 
-    let years = [];
-    let oil = [];
-    let elect = [];
+//     let years = [];
+//     let oil = [];
+//     let elect = [];
 
-    // From each JSON, pull data for x and y and add to lists
-     for (let i = 0; i < data.length; i++) {
-        let oneYear = data[i].year;
-        // Change to negative to reflect decreased usage, change per day to per year
-        let oneOil = -(data[i].oil_displacement_mbd)* 365;
-        let oneElect = data[i].electricity_demand_gwh;
-        years.push(oneYear);
-        oil.push(oneOil);
-        elect.push(oneElect);
-     }
-
-    // Build 2 axis line chart with plotly
+//     // From each JSON, pull data for x and y and add to lists
+//      for (let i = 0; i < data.length; i++) {
+//         let oneYear = data[i].year;
+//         // Change to negative to reflect decreased usage, change per day to per year
+//         let oneOil = -(data[i].oil_displacement_mbd)* 365;
+//         let oneElect = data[i].electricity_demand_gwh;
+//         years.push(oneYear);
+//         oil.push(oneOil);
+//         elect.push(oneElect);
+//      }
 
 
 
 
-//   Bar Chart:  
-
-const worldUrl = 'http://127.0.0.1:8000/sales';
 
 
-d3.json(worldUrl).then(function(data) {
-    // console.log("World info", data);
+// // //   Bar Chart:  
+
+// const worldUrl = 'http://127.0.0.1:8000/sales';
+
+
+// d3.json(worldUrl).then(function(data) {
+//     // console.log("World info", data);
         
-        let countries = []
+//         let countries = []
 
-        for (let j = 0; j < data.length; j++) {
-            if (data[j].parameter ==="EV sales" && data[j].powertrain ==="BEV" && data[j].year === 2012) {
-                countries.push(data[j].region)
-            }
-        };
+//         for (let j = 0; j < data.length; j++) {
+//             if (data[j].parameter ==="EV sales" && data[j].powertrain ==="BEV" && data[j].year === 2012) {
+//                 countries.push(data[j].region)
+//             }
+//         };
 
-        function getColor(d) {
-            return d > 500000 ? '#005a32' :
-                   d > 100000  ? '#238443' :
-                   d > 50000  ? '#41ab5d' :
-                   d > 20000  ? '#78c679' :
-                   d > 10000   ? '#addd8e' :
-                   d > 5000   ? '#d9f0a3' :
-                   d > 1000    ? '#f7fcb9' :
-                                '#ffffe5';}
+//         function getColor(d) {
+//             return d > 500000 ? '#005a32' :
+//                    d > 100000  ? '#238443' :
+//                    d > 50000  ? '#41ab5d' :
+//                    d > 20000  ? '#78c679' :
+//                    d > 10000   ? '#addd8e' :
+//                    d > 5000   ? '#d9f0a3' :
+//                    d > 1000    ? '#f7fcb9' :
+//                                 '#ffffe5';}
 
             
-        console.log("Counties", countries)
-        function init() {
-            // Supply first value to render initial charts
-            let evSales = [];
-            let evYear = [];
-            let name = "Australia"
-            let newCountry = data.filter(a => a.region === name);
-            for (let i = 0; i < newCountry.length; i++) {
-                if (newCountry[i].parameter === "EV sales" && newCountry[i].powertrain === "BEV") {
-                    evSales.push(newCountry[i].value);
-                    evYear.push(newCountry[i].year)
-                }
-            }
-            // var worldSales = []
-            // var worldYear = []
-            // var worldData = "World"
-            // let worldSearch = data.filter(a => a.region === "World");
-            // for (let k = 0; k < worldSearch.length; k++) {
-            //     if (worldSearch[k].parameter === "EV sales" && worldSearch[k].powertrain === "BEV") {
-            //         worldSales.push(worldSearch[k].value);
-            //         worldYear.push(worldSearch[k].year)
-            //     }
-            // }
+//         console.log("Counties", countries)
+//         function init() {
+//             // Supply first value to render initial charts
+//             let evSales = [];
+//             let evYear = [];
+//             let name = "Australia"
+//             let newCountry = data.filter(a => a.region === name);
+//             for (let i = 0; i < newCountry.length; i++) {
+//                 if (newCountry[i].parameter === "EV sales" && newCountry[i].powertrain === "BEV") {
+//                     evSales.push(newCountry[i].value);
+//                     evYear.push(newCountry[i].year)
+//                 }
+//             }
+//             // var worldSales = []
+//             // var worldYear = []
+//             // var worldData = "World"
+//             // let worldSearch = data.filter(a => a.region === "World");
+//             // for (let k = 0; k < worldSearch.length; k++) {
+//             //     if (worldSearch[k].parameter === "EV sales" && worldSearch[k].powertrain === "BEV") {
+//             //         worldSales.push(worldSearch[k].value);
+//             //         worldYear.push(worldSearch[k].year)
+//             //     }
+//             // }
 
 
-            console.log("County", newCountry);
-            console.log("Sales", evSales);
-            console.log("Year", evYear);
+//             console.log("County", newCountry);
+//             console.log("Sales", evSales);
+//             console.log("Year", evYear);
 
 
      
 
 
         
-            let trace1 = {
-                x: evYear,
-                y: evSales,
-                text: "Ev Sales",
-                type: "bar",
-                marker: {
-                    color: getColor(evSales[evSales.length-1]),
-                    opacity: 1,
-                    line: {
-                      color: "black",
-                      width: .5
-                    }
-                }
-              };
+//             let trace1 = {
+//                 x: evYear,
+//                 y: evSales,
+//                 text: "Ev Sales",
+//                 type: "bar",
+//                 marker: {
+//                     color: getColor(evSales[evSales.length-1]),
+//                     opacity: 1,
+//                     line: {
+//                       color: "black",
+//                       width: .5
+//                     }
+//                 }
+//               };
 
            
           
-              let traceData = [trace1];
+//               let traceData = [trace1];
 
-              var layout = {
-                title: {
-                    text: 'Annual EV Sales by Country',
-                    size: 24
-                }
+//               var layout = {
+//                 title: {
+//                     text: 'Annual EV Sales by Country',
+//                     size: 24
+//                 }
 
-              }
+//               }
           
-              Plotly.newPlot("bar", traceData, layout);
+//               Plotly.newPlot("bar", traceData, layout);
             
               
             
-        }
+//         }
         
 
 
 
 
-// // DOM functions to pull dropdown and update charts
- let selector = d3.select("#selDataset");
+// // // DOM functions to pull dropdown and update charts
+//  let selector = d3.select("#selDataset");
          
- countries.forEach((sample) => {
-     selector
-         .append("option")
-         .text(sample)
-         .property("value", sample);
- });    
+//  countries.forEach((sample) => {
+//      selector
+//          .append("option")
+//          .text(sample)
+//          .property("value", sample);
+//  });    
 
 
-d3.selectAll("#selDataset").on("change", updatePlotly);
+// d3.selectAll("#selDataset").on("change", updatePlotly);
 
-// This function is called when a dropdown menu item is selected
-function updatePlotly() {
-  // Use D3 to select the dropdown menu
-  let dropdownMenu = d3.select("#selDataset");
-  // Assign the value of the dropdown menu option to a variable
-  let name = dropdownMenu.property("value");
+// // This function is called when a dropdown menu item is selected
+// function updatePlotly() {
+//   // Use D3 to select the dropdown menu
+//   let dropdownMenu = d3.select("#selDataset");
+//   // Assign the value of the dropdown menu option to a variable
+//   let name = dropdownMenu.property("value");
 
 
-  // Find new sample by id in JSON
-  let evSales = [];
-  let evYear = [];
-  let newCountry = data.filter(a => a.region === name);
-            for (let i = 0; i < newCountry.length; i++) {
-                if (newCountry[i].parameter === "EV sales" && newCountry[i].powertrain === "BEV") {
-                    evSales.push(newCountry[i].value);
-                    evYear.push(newCountry[i].year)
-                }
-            }
-            console.log("County", newCountry);
-            console.log("Sales", evSales);
-            console.log("Year", evYear);
+//   // Find new sample by id in JSON
+//   let evSales = [];
+//   let evYear = [];
+//   let newCountry = data.filter(a => a.region === name);
+//             for (let i = 0; i < newCountry.length; i++) {
+//                 if (newCountry[i].parameter === "EV sales" && newCountry[i].powertrain === "BEV") {
+//                     evSales.push(newCountry[i].value);
+//                     evYear.push(newCountry[i].year)
+//                 }
+//             }
+//             console.log("County", newCountry);
+//             console.log("Sales", evSales);
+//             console.log("Year", evYear);
 
-            let trace1 = {
-                x: evYear,
-                y: evSales,
-                text: "Ev Sales",
-                type: "bar",
-                marker: {
-                    color: getColor(evSales[evSales.length-1]),
-                    opacity: 1,
-                    line: {
-                      color: "black",
-                      width: .5
-                    }
-                }
+//             let trace1 = {
+//                 x: evYear,
+//                 y: evSales,
+//                 text: "Ev Sales",
+//                 type: "bar",
+//                 marker: {
+//                     color: getColor(evSales[evSales.length-1]),
+//                     opacity: 1,
+//                     line: {
+//                       color: "black",
+//                       width: .5
+//                     }
+//                 }
                 
-              };
+//               };
 
-              let traceData = [trace1];
+//               let traceData = [trace1];
           
-              var layout = {
-                title: {
-                    text: 'Annual EV Sales by Country',
-                    size: 24
-                }
+//               var layout = {
+//                 title: {
+//                     text: 'Annual EV Sales by Country',
+//                     size: 24
+//                 }
 
-              }
+//               }
           
-              Plotly.newPlot("bar", traceData, layout);
+//               Plotly.newPlot("bar", traceData, layout);
 
-        }
-
-
-
-init();
-});
+//         }
 
 
 
+// init();
+// });
 
 
-});
 
 
 
-const url = 'http://127.0.0.1:8000/energy';
-const dataPromise = d3.json(url);
-console.log("Data Promise: ", dataPromise);
-
-d3.json(url).then(function(data) {
-     console.log("JSON output", data);
-
-    let years = [];
-    let oil = [];
-    let elect = [];
-
-     for (let i = 0; i < data.length; i++) {
-        let oneYear = data[i].year;
-        let oneOil = -(data[i].oil_displacement_mbd)*365;
-        let oneElect = data[i].electricity_demand_gwh;
-        years.push(oneYear);
-        oil.push(oneOil);
-        elect.push(oneElect);
-     }
+// });
 
 
-console.log(years)
-console.log(oil)
-console.log(elect)
 
-// https://stackoverflow.com/questions/38085352/how-to-use-two-y-axes-in-chart-js-v2
-    var canvas = document.getElementById('myChart');
-    new Chart(canvas, {
-    type: 'line',
-    data: {
-        labels: years,
-        datasets: [{
-        backgroundColor: '#6baed6',
-        borderColor: '#4292c6',  
-        label: 'Oil Displacement Millions of Barrels',
-        yAxisID: 'A',
-        data: oil
-        }, {
-        backgroundColor: '#41ab5d',
-        borderColor: '#41ab5d',
-        label: 'Electricity Usage increase (gwH)',
-        yAxisID: 'B',
-        data: elect
-        }]
-    },
-    options: {
-        plugins: {
-        title: {
-            display: true,
-            text: 'US Oil Displacement vs. Increased Electricity Demand',
-            },
-        },
-        animation: {
-            duration: 10000,
-        },
-        scales: {
-        A: {
-            id: 'A',
-            type: 'linear',
-            position: 'left',
-            ticks: {
-                max: 0,
-                min: -.15
-            }
-        }, 
-        B: {
-            id: 'B',
-            type: 'linear',
-            position: 'right',
-            ticks: {
-            max: 16000,
-            min: 0
-            }
-        }
-        }
-    }
-    });
-
-});

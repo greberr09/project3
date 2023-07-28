@@ -87,7 +87,7 @@ def get_tax():
 @app.route('/stations', methods=['GET'])
 @cross_origin(supports_credentials=True)
 def get_stations():
-	stations = mongo.db.alt_fuel_stations_update
+	stations = mongo.db.alt_fuel_stations
 	stationsList = []
 	station = stations.find()
 	for j in station:
@@ -95,7 +95,42 @@ def get_stations():
 		stationsList.append(j)
 	return jsonify(stationsList)	
 
+# ev_population_data url = 'http://127.0.0.1:8000/population'
+@app.route('/population', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_population():
+	population = mongo.db.us_state_geojson
+	popList = []
+	onePop = population.find()
+	for j in onePop:
+		j.pop('_id')
+		popList.append(j)
+	return jsonify(popList)	
 
+
+# ev_oil_electricity url = 'http://127.0.0.1:8000/energy'
+@app.route('/energy', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_energy():
+	energy = mongo.db.ev_oil_electricity
+	energyList = []
+	entry = energy.find()
+	for j in entry:
+		j.pop('_id')
+		energyList.append(j)
+	return jsonify(energyList)	
+
+# us_zip url = 'http://127.0.0.1:8000/zip'
+@app.route('/zip', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_zip():
+	uszip = mongo.db.us_zip
+	ziplist = []
+	zip = uszip.find()
+	for j in zip:
+		j.pop('_id')
+		ziplist.append(j)
+	return jsonify(ziplist)
 
 if __name__ == "__main__":
   app.run(port=8000, debug=True)
