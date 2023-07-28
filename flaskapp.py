@@ -45,6 +45,18 @@ def get_model():
 		sales.append(j)
 	return jsonify(sales)
 
+# ev_sales_by_model2 url = 'http://127.0.0.1:8000/model2'
+@app.route('/model2', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_model2():
+	salesByModel2 = mongo.db.ev_sales_by_model2
+	sales2 = []
+	sale2 = salesByModel2.find()
+	for j in sale2:
+		j.pop('_id')
+		sales2.append(j)
+	return jsonify(sales2)
+
 
 # ev_registration_counts_by_state url = 'http://127.0.0.1:8000/count'
 @app.route('/count', methods=['GET'])
