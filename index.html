@@ -54,7 +54,7 @@
         <!-- Div for world stats bar -->
         <div class="col-md-6">
           <div class="well">
-            <h5>Select Country:</h5>
+            <h6>Select Country:</h6>
             <select id="selDataset" onchange="optionChanged(this.value)"></select>
             <script> function optionChanged(i) { let name = i; console.log("New Sample Name: ", i)}; </script>
           </div>
@@ -82,20 +82,26 @@
           <!-- The div for a Chart -->
             <!-- <canvas id="barChart"></canvas> -->
         </div>
-        <div class="row">
-        <!-- button/input field for map -->
-        <div class="col">
-            <input type="text" id="zip" name="zipzoom">
-            <input type="button" id="btn" value="Zoom to Zip">
-            <input type="button" id="resize" value="Reset">
-        </div>
-        <div class="col">
-          <!-- The div that holds our Leaflet map -->
-          <div id="map" class="leaflet-container"></div>
-        </div>
+        <!-- <div class="row"> -->
+      <!-- button/input field for map -->
+      <br><br />
+      <h5>EV Registrations and Charging Stations 2022</h5>
+      <div class="col">
+          <input type="text" id="zip" name="zipzoom">
+          <input type="button" id="btn" value="Zoom to Zip">
+          <input type="button" id="resize" value="Reset">
       </div>
+      <!-- <div class="col"> -->
+        <!-- The div that holds our Leaflet map -->
+        <div id="map" style="width:1200px; height: 500px;"></div>
+      <!-- </div> -->  
       </div>
+      
+      
     </div>
+  
+    </div>
+    
     
 <!-- Leaflet JavaScript code -->
  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
@@ -123,8 +129,8 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <!-- EV JavaScripts -->
-    <script type="text/javascript" src="static/js/bubble2.js"></script>
-    <!-- <script type="text/javascript" src="static/js/bubble.js"></script> -->
+    <!-- <script type="text/javascript" src="static/js/bubble2.js"></script> -->
+    <script type="text/javascript" src="static/js/bubble.js"></script>
     <script type="text/javascript" src="static/js/leaflet.js"></script>
     <script type="text/javascript" src="static/js/bar.js"></script>
     <script type="text/javascript" src="static/js/energyLine.js"></script>

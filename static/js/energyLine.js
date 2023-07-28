@@ -46,6 +46,9 @@ d3.json(url2).then(function(data) {
         title: {
             display: true,
             text: 'US Oil Displacement vs. Increased Electricity Demand',
+            font: {
+                size: 20,
+            },
             },
         },
         // Slow down animation
