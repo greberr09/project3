@@ -6,7 +6,7 @@ const dataPromise2 = d3.json(url2);
 
 
 d3.json(url2).then(function(data) {
-     console.log("JSON output", data);
+    //  console.log("JSON output", data);
 
     let years = [];
     let oil = [];
