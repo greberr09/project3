@@ -118,7 +118,7 @@ d3.json(url).then(function (data) {
                             return value.toString();
                         },
                         font: {
-                            size: 9,
+                            size: 16,
                         },
                     },
                 },
