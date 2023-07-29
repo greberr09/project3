@@ -112,7 +112,8 @@ d3.json(url).then(function (data) {
             },
             scales: {
                 x: {
-                    min: 2011,
+                    min: 2010,
+                    max: 2020,
                     ticks: {
                         callback: function (value, index, values) {
                             return value.toString();
