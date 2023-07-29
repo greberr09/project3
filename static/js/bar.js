@@ -7,23 +7,14 @@ d3.json(worldUrl).then(function(data) {
 
     // Build total country list and 2022 world info    
         let countries = []
-        let allSales = []
-        let allCountries = []
+        
         // country list
         for (let j = 0; j < data.length; j++) {
             if (data[j].parameter ==="EV sales" && data[j].powertrain ==="BEV" && data[j].year === 2012) {
                 countries.push(data[j].region)
             }
         };
-        // world info
-        for (let l = 0; l < data.length; l++) {
-            if (data[l].parameter ==="EV sales" && data[l].powertrain ==="BEV" && data[l].year === 2022 
-            && data[l].region != "World" && data[l].region != "Europe") {
-                    allSales.push(data[l].value)
-                    allCountries.push(data[l].region)
-             }
-           
-        };
+        
 
         // Build color pallette to match map and reflect totals
         function getColor(d) {
@@ -106,8 +97,7 @@ function updatePlotly() {
   let dropdownMenu = d3.select("#selDataset");
   // Assign the value of the dropdown menu option to a variable
   let name = dropdownMenu.property("value");
-// Omit 'world' from search so we can use the 2022 stats for world
-  // if (name != "World") {
+
   // Find new sample by id in JSON
   let evSales = [];
   let evYear = [];
@@ -145,33 +135,6 @@ function updatePlotly() {
               Plotly.newPlot("bar", traceData, layout);
         }
    
-            // Show 2022 world plot if "World" is selected
-            // else if (name === "World") { 
-            //     let trace1 = {
-            //     x: allCountries,
-            //     y: allSales,
-            //     text: "Ev Sales",
-            //     type: "bar",
-            //     marker: {
-            //         color: '#005a32',
-            //         opacity: 1,
-            //         line: {
-            //           color: "black",
-            //           width: .5
-            //         }
-            //     }
-            //   };
-            //   let traceData = [trace1];
-        
-            //   var layout = {
-            //     title: {
-            //         text: 'Global Sales 2022',
-            //         size: 24
-            //     }
-            //   }
-            //   Plotly.newPlot("bar", traceData, layout);
-            // }
-        // }
 init();
 });
 

@@ -1,5 +1,5 @@
+# Flask app MongoDB API
 
-# python -m http.server --bind 127.0.0.1
 # pip install flask-pymongo
 # pip install flask-cors
 
