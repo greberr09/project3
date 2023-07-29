@@ -107,7 +107,7 @@ function updatePlotly() {
   // Assign the value of the dropdown menu option to a variable
   let name = dropdownMenu.property("value");
 // Omit 'world' from search so we can use the 2022 stats for world
-  if (name != "World") {
+  // if (name != "World") {
   // Find new sample by id in JSON
   let evSales = [];
   let evYear = [];
@@ -146,32 +146,32 @@ function updatePlotly() {
         }
    
             // Show 2022 world plot if "World" is selected
-            else if (name === "World") { 
-                let trace1 = {
-                x: allCountries,
-                y: allSales,
-                text: "Ev Sales",
-                type: "bar",
-                marker: {
-                    color: '#005a32',
-                    opacity: 1,
-                    line: {
-                      color: "black",
-                      width: .5
-                    }
-                }
-              };
-              let traceData = [trace1];
+            // else if (name === "World") { 
+            //     let trace1 = {
+            //     x: allCountries,
+            //     y: allSales,
+            //     text: "Ev Sales",
+            //     type: "bar",
+            //     marker: {
+            //         color: '#005a32',
+            //         opacity: 1,
+            //         line: {
+            //           color: "black",
+            //           width: .5
+            //         }
+            //     }
+            //   };
+            //   let traceData = [trace1];
         
-              var layout = {
-                title: {
-                    text: 'Global Sales 2022',
-                    size: 24
-                }
-              }
-              Plotly.newPlot("bar", traceData, layout);
-            }
-        }
+            //   var layout = {
+            //     title: {
+            //         text: 'Global Sales 2022',
+            //         size: 24
+            //     }
+            //   }
+            //   Plotly.newPlot("bar", traceData, layout);
+            // }
+        // }
 init();
 });
 
