@@ -24,10 +24,10 @@ https://docs.python.org/3/library/http.server.html#http.server.SimpleHTTPRequest
 
 DATA
 
-Zipcode data:
+Zipcode data: The zipcode dataset from this github project is being used for the "zoom to zip" feature on the US map. Resource taken from M Bostock zip visualization.
 https://gist.github.com/mbostock/5180185#file-zipcodes-tsv
 
-States geojson:
+States geojson: This dataset was organized by Eric Celeste using data from the US Census Bureau. It is a public dataset but it is requested that the Census Bureau be referenced as a resource.
 https://eric.clst.org/tech/usgeojson/
 
 State population:
