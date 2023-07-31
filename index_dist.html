@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>EV Studies</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+      <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin="" />
+
+
+    <!-- CSS for the Leaflet map -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <style>
+      .col-md-5 {
+        width: 390px;
+        height: 350px;
+      }
+    </style>
+    <style>
+      .leafletMap {
+        height: 485px;
+      }
+      .container-fluid {
+        height: 100vh;  /*sets height to 100% of the viewport height. */
+        overflow-y: scroll;  /* adds vertical scroll*/
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 jumbotron text-center">
+          <h1>Electric Vehicle Studies</h1>
+          <p>Use the interactive charts below to explore EVs in the U.S. and around the world</p>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Div for energy chart -->
+        <div class="col-md-6">
+            <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+        </div>
+        <!-- Div for world stats bar -->
+        <div class="col-md-6">
+          <div class="well">
+            <h6>Select Country:</h6>
+            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+            <script> function optionChanged(i) { let name = i; console.log("New Sample Name: ", i)}; </script>
+          </div>
+          <div id="bar"></div>
+        </div>
+
+      </div>
+      <div class="row">
+        <!-- The div that holds our Line Chart if we use chart.js to create it-->
+        <div class="col-md-6">
+            <!-- <canvas id="myChart" style="width:100%;max-width:700px"></canvas> -->
+        </div>
+       
+        <div class="col-md-6">
+          <div class="col">
+        </div>
+          <!-- The div that holds the Bubble Chart using chart.js -->
+          <canvas
+            id="bubbleChart"
+            width="800"
+            height="400"
+            aria-label="Electronic Vehicle sales by make and year"
+            role="img"></canvas>
+            
+        </div>
+      </div>
+        <div class="row">
+          <!-- The div for a Chart -->
+            <!-- <canvas id="barChart"></canvas> -->
+        </div>
+        <!-- <div class="row"> -->
+      <!-- button/input field for map -->
+      <br><br />
+      <h5>EV Registrations and Charging Stations 2022</h5>
+      <div class="col">
+          <input type="text" id="zip" name="zipzoom">
+          <input type="button" id="btn" value="Zoom to Zip">
+      </div>
+      <!-- <div class="col"> -->
+        <!-- The div that holds our Leaflet map -->
+        <div id="map" style="width:1200px; height: 500px;"></div>
+      <!-- </div> -->  
+      </div>
+      
+      
+    </div>
+  
+    </div>
+    
+    
+<!-- Leaflet JavaScript code -->
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+ integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+ crossorigin=""></script>
+
+<!-- Marker cluster JavaScript code -->
+ <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+ <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+ 
+ <!-- leaflet-choropleth JavaScript -->
+  <script type=“text/javascript” src=“static/js/choropleth.js”></script>
+
+ <!-- <script type="text/javascript" src="static/js/choropleth.js"></script> -->
+
+ <!-- Chart.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.min.js"></script>
+
+  <!-- Plotly script -->
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+
+    <!-- D3 JavaScript -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- EV JavaScripts -->
+    <!-- <script type="text/javascript" src="static/js/bubble2.js"></script> -->
+    <script type="text/javascript" src="static/js/bubble2.js"></script>
+    <script type="text/javascript" src="static/js/leaflet.js"></script>
+    <script type="text/javascript" src="static/js/bar.js"></script>
+    <script type="text/javascript" src="static/js/energyLine.js"></script>
+  </body>
+</html>
+
