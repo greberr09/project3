@@ -82,7 +82,7 @@ function plotHistData (sales) {
       console.log("eu Sales ", euSales);
 
       //  get location to add chart
-      let ctx = document.getElementById("barChart").getContext("2d");
+      let ctx = document.getElementById("histBarChart").getContext("2d");
 
       // define data to use
       // Colors: Chroma.js color palette, accessible for all three types of color blindness
@@ -205,7 +205,6 @@ function plotTopTen (percents) {
 
   // take only the top ten
   const pct = sharesSold.slice(0, 10);  
-  console.log("sliced", pct);
 
   // create arrays for plotting
   const regions = [];
@@ -238,16 +237,16 @@ function plotTopTen (percents) {
   // define chart options
   const options = {
     cutout: "10%",
-    radius: "98%",
-    animation: {
-      duration: 5000,
-    },
+    radius: 150,
+    ///animation: {
+      //duration: 4000,
+    //},
     responsive: true,
     hoverOffset : 4,
     plugins : {
       title: {
         display: true,
-        text: 'Top Ten EVs as % of Total Vehicles Sold',
+        text: 'Top Ten Countries for Percentage of EVs Sold',
         font: {
           size: 22,
         },
@@ -255,7 +254,6 @@ function plotTopTen (percents) {
       legend: {
         display: true,
         padding: 20, 
-        //boxsize: 30,
         labels: {
           font: {
             size: 14,
@@ -321,14 +319,6 @@ function plotTaxData (esales, hsales) {
       hybrids.push(hybridCount);
   };
 
-  years.reverse();
-  evs.reverse();
-  hybrids.reverse();
-
-  console.log("years ", years);
-  console.log("EV Sales ", evs);
-  console.log("HybridSales", hybrids);
-
   //  get location to add chart
   let ctx = document.getElementById("txChart").getContext("2d");
 
@@ -342,60 +332,69 @@ function plotTaxData (esales, hsales) {
       borderColor: '#73a2c6',
       label: 'EV Sales',
       data: evs,
-      borderWidth: 3,
+      borderWidth: 4,
       fill: false, 
-      //barPercentage: 0.6,
+      tension: 0.3,
     },
     {
       backgroundColor: '#be214d',
       borderColor: '#be214d',
       label: 'Hybrid Sales',
       data: hybrids,
-      borderWidth: 3,
+      borderWidth: 4,
       fill: false, 
-      // barPercentage: 0.6,
+      tension: 0.3,
     },
     ]
-};
+  };
 
   // define chart options
   const options = {
-    indexAxis: 'y',
-    plugins : {
-      title: {
+    legend: {
+      display: true,
+      position: 'center',
+      labels: {
+        font: {
+            size: 18,
+        },
+      },
+    }, 
+    plugins: {
+    title: {
         display: true,
         text: 'US EV Sales and Tax Incentives',
         font: {
           size: 22,
         },
-      },
-      legend: {
-        display: true,
-        position: 'right',
-        labels: {
-            font: {
-                size: 18,
-            },
-        }
-      }, 
-
+    },
       annotation: {
-        annotations: {
-          line: {
+        annotations: [
+          {
+            id: 'incentiveThresholdLine',
             type: 'line',
-            yMin: 2019,
-            yMax: 2019,
+            display: true,
+            yMin: 200000, 
+            yMax: 200000,
+            borderWidth: 1,
+            borderColor: 'red', 
+          },
+          {
+            id: 'exceededThreholdLine',
+            type: 'line',
+            display: true,
+            xMin: 2019,
+            //xMax: 2019, 
+            value: 2019,
+            //endvalue: 2019, 
+            //scaleID: "x1",
             borderWidth: 2,
-            borderColor: 'red'
-          }
-        }
+            borderColor: 'red', 
+          },
+        ],
       },
       elements: {
-        line: {
-          tension: 0.6, 
-        },
         point: {
-          radius: 5, 
+          radius: 3, 
           hitRadius: 10,
           hoverRadius: 8,
         },
@@ -409,23 +408,20 @@ function plotTaxData (esales, hsales) {
         },
       },
     },
-    animation: {
-      duration: 4000,
-      //easing: 'easeInOutQuad',
-      tension: {
-          duration: 2000,
-          //easing: 'linear',
-          easing: 'easeInOutQuad',
-          from: 1,
-          to: 0,
-          loop: false
-      }
-    },
+    //animation: {
+     // duration: 4000,
+      //tension: {
+        //  duration: 4000,
+          //easing: 'easeInOutQuad',
+          //from: 1,
+          //to: 0,
+          //loop: false
+      //}
+   // },
     responsive: true,
     scales: {
       x: {
-          //type: 'logarithmic', 
-          // stacked: true,
+          id: "x1",
           ticks: {
             font: {
                 size: 14,
@@ -433,8 +429,8 @@ function plotTaxData (esales, hsales) {
           },
         },  
       y: {
-          //type: 'logarithmic', 
           stacked: false,
+          yAxisID: 'Yax',
           ticks: {
             padding: 10,
             font: {
@@ -477,7 +473,7 @@ function buildDropdown(years) {
   var dropdownMenu = document.getElementById("selTaxYear");
 
   for (let i = 2010; i < 2023; i++) {
-  // add the list of names to the selection
+  // add the list of countries to the selection
   // countries.forEach(country => {
     let option = document.createElement("option");
     option.value = i;
@@ -490,9 +486,6 @@ function drawPlots() {
 
     const taxIncentivesURL = 'http://127.0.0.1:8000/tax';
     const histSalesURL = 'http://127.0.0.1:8000/sales';
-
-    // Build the drop down list of years
-    // buildDropdown(taxYears);
 
       // Call the function to load and map the hist sales data
     getHistData(histSalesURL);
