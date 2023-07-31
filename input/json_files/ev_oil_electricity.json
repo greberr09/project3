@@ -1,0 +1,130 @@
+[{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a7466582"
+  },
+  "year": 2010,
+  "region": "USA",
+  "oil_displacement_mbd": 0.00032,
+  "electricity_demand_gwh": 96,
+  "value": 0.00032
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a7466583"
+  },
+  "year": 2011,
+  "region": "USA",
+  "oil_displacement_mbd": 0.00064,
+  "electricity_demand_gwh": 260,
+  "value": 0.00064
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a7466584"
+  },
+  "year": 2012,
+  "region": "USA",
+  "oil_displacement_mbd": 0.0032,
+  "electricity_demand_gwh": 300,
+  "value": 0.0032
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a7466585"
+  },
+  "year": 2013,
+  "region": "USA",
+  "oil_displacement_mbd": 0.0045,
+  "electricity_demand_gwh": 1100,
+  "value": 0.0045
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a7466586"
+  },
+  "year": 2014,
+  "region": "USA",
+  "oil_displacement_mbd": 0.017000001,
+  "electricity_demand_gwh": 820,
+  "value": 0.017000001
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a7466587"
+  },
+  "year": 2015,
+  "region": "USA",
+  "oil_displacement_mbd": 0.011,
+  "electricity_demand_gwh": 3800,
+  "value": 0.011
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a7466588"
+  },
+  "year": 2016,
+  "region": "USA",
+  "oil_displacement_mbd": 0.028999999,
+  "electricity_demand_gwh": 3500,
+  "value": 0.028999999
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a7466589"
+  },
+  "year": 2017,
+  "region": "USA",
+  "oil_displacement_mbd": 0.018999999,
+  "electricity_demand_gwh": 7500,
+  "value": 0.018999999
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a746658a"
+  },
+  "year": 2018,
+  "region": "USA",
+  "oil_displacement_mbd": 0.057999998,
+  "electricity_demand_gwh": 5000,
+  "value": 0.057999998
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a746658b"
+  },
+  "year": 2019,
+  "region": "USA",
+  "oil_displacement_mbd": 0.039000001,
+  "electricity_demand_gwh": 13000,
+  "value": 0.039000001
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a746658c"
+  },
+  "year": 2020,
+  "region": "USA",
+  "oil_displacement_mbd": 0.043000001,
+  "electricity_demand_gwh": 5400,
+  "value": 0.043000001
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a746658d"
+  },
+  "year": 2021,
+  "region": "USA",
+  "oil_displacement_mbd": 0.068999998,
+  "electricity_demand_gwh": 6500,
+  "value": 6500
+},
+{
+  "_id": {
+    "$oid": "64bf25c3f9a9ebc9a746658e"
+  },
+  "year": 2022,
+  "region": "USA",
+  "oil_displacement_mbd": 0.109999999,
+  "electricity_demand_gwh": 15000,
+  "value": 0.109999999
+}]

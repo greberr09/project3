@@ -1,6 +1,3 @@
-//  const taxIncentivesURL = 'http://127.0.0.1:8000/tax';
-const histSalesURL = 'http://127.0.0.1:8000/sales';
-
 
 function getHistData(histSalesURL) {
 
@@ -11,8 +8,6 @@ function getHistData(histSalesURL) {
   const histDataPromise = d3.json(histSalesURL);
   
   d3.json(histSalesURL).then(function(data) {
-
-  console.log("json: ", data);
   
     const filtered = data.filter(item => item.parameter === "EV sales" || item.parameter === "EV sales share"); 
 
@@ -77,9 +72,7 @@ function plotHistData (sales) {
           worldSales.push(worldCount);
       };
 
-      console.log("US Sales ", usSales);
       console.log("world sales ", worldSales);
-      console.log("eu Sales ", euSales);
 
       //  get location to add chart
       let ctx = document.getElementById("histBarChart").getContext("2d");
@@ -138,9 +131,9 @@ function plotHistData (sales) {
             display: true,
             labels: {
                 font: {
-                    size: 18,
+                    size: 16,
                 },
-            }
+            },
           },
           tooltip: {
             backgroundColor: 'purple', 
@@ -154,13 +147,12 @@ function plotHistData (sales) {
         animation: {
           duration: 5000,
         },
-        responsive: true,
         scales: {
           x: {
               stacked:  false,
               ticks: {
                 font: {
-                    size: 14,
+                  size: 14,
                 },
               },
             },  
@@ -168,7 +160,7 @@ function plotHistData (sales) {
             type: 'logarithmic', 
               stacked: false,
               ticks: {
-                padding: 10,
+                padding: 12,
                 font: {
                   size: 14,
                 },
@@ -187,7 +179,6 @@ function plotHistData (sales) {
         options: options,
         });
 
-      console.log("chart ", histChart);
 };
 
 function plotTopTen (percents) {
@@ -237,10 +228,10 @@ function plotTopTen (percents) {
   // define chart options
   const options = {
     cutout: "10%",
-    radius: 150,
-    ///animation: {
-      //duration: 4000,
-    //},
+    radius: "98%",
+    animation: {
+      duration: 2000,
+    },
     responsive: true,
     hoverOffset : 4,
     plugins : {
@@ -288,8 +279,6 @@ function plotTopTen (percents) {
     data: topTenData,
     options: options,
     });
-
-  console.log("chart ", topTenChart);
 };
 
 function plotTaxData (esales, hsales) {
@@ -299,9 +288,6 @@ function plotTaxData (esales, hsales) {
  
   const evItems = esales.filter(item => item.region === "USA" && item.year > 2010); 
   const hybridItems = hsales.filter(item => item.region === "USA"); 
-
-  console.log("evs ", evItems);
-  console.log("hybrids ", hybridItems);
 
   // create arrays for plotting butterfly chart
   const years = [];
@@ -324,9 +310,9 @@ function plotTaxData (esales, hsales) {
 
   // define data to use
   // Colors: Chroma.js color palette, accessible for all three types of color blindness
-  const txData = {
-    labels: years,
-    datasets: [
+    const txData = {
+      labels: years,
+      datasets: [
     {
       backgroundColor: '#73a2c6',
       borderColor: '#73a2c6',
@@ -355,20 +341,21 @@ function plotTaxData (esales, hsales) {
       position: 'center',
       labels: {
         font: {
-            size: 18,
+            size: 20,
         },
       },
-    }, 
+    },
     plugins: {
-    title: {
+      title: {
         display: true,
         text: 'US EV Sales and Tax Incentives',
         font: {
           size: 22,
         },
-    },
+      },
       annotation: {
-        annotations: [
+        clip: false,
+          annotations: [
           {
             id: 'incentiveThresholdLine',
             type: 'line',
@@ -377,16 +364,51 @@ function plotTaxData (esales, hsales) {
             yMax: 200000,
             borderWidth: 1,
             borderColor: 'red', 
+            label: {
+              font: { 
+                backgroundColor: 'red'
+              },
+              content: ['Manufacturer vehicle limit'],
+            },
+          },     
+          { id: "incentiveLabel",
+            type: 'label',
+            drawTime: 'beforeDraw',
+            xValue: 2012,
+            yValue: 250000,
+            display: true,
+            backgroundColor: 'red',
+            textStrokeColor: 'black', 
+            content: ['Manufacturer vehicle limit'],
+            font: {
+              size: 18
+            },
           },
           {
             id: 'exceededThreholdLine',
             type: 'line',
+            //drawTime: 'beforeDraw',
             display: true,
-            xMin: 2019,
+            mode: 'vertical',
+            //xMin: 2019,
             //xMax: 2019, 
-            value: 2019,
+            //value: 2019,
             //endvalue: 2019, 
-            //scaleID: "x1",
+            scaleID: "x",
+            borderWidth: 2,
+            borderColor: 'red', 
+          },
+          {
+            id: 'threatenedEliminationLine',
+            type: 'line',
+            //drawTime: 'beforeDraw',
+            display: true,
+            mode: 'vertical',
+            //xMin: 2017,
+            //xMax: 2017, 
+            //value: 2017,
+            //endvalue: 2017, 
+            scaleID: "x",
             borderWidth: 2,
             borderColor: 'red', 
           },
@@ -408,34 +430,35 @@ function plotTaxData (esales, hsales) {
         },
       },
     },
-    //animation: {
-     // duration: 4000,
-      //tension: {
-        //  duration: 4000,
-          //easing: 'easeInOutQuad',
-          //from: 1,
-          //to: 0,
-          //loop: false
-      //}
-   // },
-    responsive: true,
+    animation: {
+     duration: 4000,
+      tension: {
+        duration: 4000,
+        easing: 'easeInOutQuad',
+        from: 1,
+        to: 0,
+        loop: false
+      }
+   },
     scales: {
       x: {
-          id: "x1",
+          //id : 'x-axis-label',
           ticks: {
             font: {
                 size: 14,
             },
+          beginAtZero: true,
           },
         },  
       y: {
           stacked: false,
-          yAxisID: 'Yax',
+          //yAxisID: 'y1',
           ticks: {
             padding: 10,
             font: {
               size: 14,
             },
+            beginAtZero: true,
           },
       },
     },
@@ -448,38 +471,37 @@ function plotTaxData (esales, hsales) {
     data: txData,
     options: options,
     });
-
-  console.log("chart ", txChart);
 };
 
-function buildDropdown(years) {
+function buildDropdown(countries) {
+
+  const selectedRegions = new Set();
 
 // Access the dropdown menu element
-var dropdownMenu = document.getElementById("selTaxYear");
+  var dropdownMenu = document.getElementById("#selRegDataset");
 
-  for (let i = 2010; i < 2023; i++) {
   // add the list of names to the selection
-  // countries.forEach(country => {
+  countries.forEach(country => {
     let option = document.createElement("option");
-    option.value = i;
-    option.text = i;
+    option.value = country;
+    option.text = country;
     dropdownMenu.appendChild(option);
+  });
+
+  // Add event listener to the dropdown
+  dropdownMenu.addEventListener('change', (event) => {      
+    const selectedRegion = event.target.value;
+
+    // If selection region not already selected, add it to set
+    if (selectedRegion && !selectedRegions.has(selectedRegion)) {
+    
+      selectedRegions.add(selectedRegion);
+
+      if (selectedRegions.size === 3) { 
+        console.log('All three options selected:', selectedRegions);
+    };
   };
-};
-
-function buildDropdown(years) {
-
-  // Access the dropdown menu element
-  var dropdownMenu = document.getElementById("selTaxYear");
-
-  for (let i = 2010; i < 2023; i++) {
-  // add the list of countries to the selection
-  // countries.forEach(country => {
-    let option = document.createElement("option");
-    option.value = i;
-    option.text = i;
-    dropdownMenu.appendChild(option);
-  };
+  });
 };
 
 function drawPlots() {
@@ -492,11 +514,11 @@ function drawPlots() {
 
 };
 
-// This function is called within the index.html when a dropdown menu item is selected
-function optionChanged(newYear) {
+// This function is called after a dropdown region is selected
+function regionsSelected(region) {
 
     // Fetch the new JSON data and log ii
-    fetchData(taxIncentivesURL).then(data => {
+    fetchData(histSalesURL).then(data => {
         
             console.log("cars for " + data);
             }); 
@@ -504,4 +526,4 @@ function optionChanged(newYear) {
 
 drawPlots();
 
-// d3.selectAll("#selDataset").on("change", optionChanged(newID));
+// d3.selectAll("#selRegDataset").on("change", regionSelected(newID));
