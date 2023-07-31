@@ -63,9 +63,9 @@
 
       </div>
       <div class="row">
-        <!-- The div that holds our Line Chart if we use chart.js to create it-->
+        <!-- The div that holds a Chart -->
         <div class="col-md-6">
-            <!-- <canvas id="myChart" style="width:100%;max-width:700px"></canvas> -->
+            <canvas id="topTenChart" style="width:100%;max-width:700px"></canvas>
         </div>
        
         <div class="col-md-6">
@@ -82,8 +82,14 @@
         </div>
       </div>
         <div class="row">
+          <div class="col-md-6">
           <!-- The div for a Chart -->
-            <!-- <canvas id="histBarChart"></canvas> -->
+            <canvas id="histBarChart"></canvas>
+          </div>
+          <div class="col-md-6">
+          <!-- The div for a Chart -->
+            <canvas id="txChart"></canvas>
+          </div>
         </div>
         <!-- <div class="row"> -->
       <!-- button/input field for map -->
@@ -137,6 +143,7 @@
     <script type="text/javascript" src="static/js/leaflet.js"></script>
     <script type="text/javascript" src="static/js/bar.js"></script>
     <script type="text/javascript" src="static/js/energyLine.js"></script>
+    <script type="text/javascript" src="static/js/sales.js"></script>
   </body>
 </html>
 
