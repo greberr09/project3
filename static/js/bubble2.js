@@ -15,7 +15,7 @@ function reduceData(data, numCars) {
 
 function parseData(data) {
   let years = [];
-  for (let year = 2011; year <= 2019; year++) {
+  for (let year = 2010; year <= 2020; year++) {
     years.push(year);
   }
   let newData = data.map((obj) => {
@@ -73,12 +73,36 @@ d3.json(url).then(function (data) {
         },
         options: {
             interaction: {
-                mode: "dataset",
+                mode: "point",
             },
             plugins: {
-                title: {
+              zoom: {
+                limits: {
+                  x: {min: 2010, max: 2020, minRange: 1},
+                  y: {min: 0, max: 160000, minRange: 50}
+                },
+              pan: {
+                enabled: true,
+                mode: 'x',
+
+              },
+              zoom: {
+                wheel: {
+                enabled: true
+                },
+                drag: {
+                enabled: true
+                },
+                pinch: {
+                enabled: true
+                },
+                mode: "x",
+                speed: .1
+              }
+            },
+               title: {
                     display: true,
-                    text: "Electric Vehicle Sales per Year by Make & Model (Top 10 Vehicles)",
+                    text: "US Electric Vehicle Sales per Year by Make & Model (Top 10 Vehicles)",
                     font: {
                         size: 25,
                     },
@@ -115,8 +139,10 @@ d3.json(url).then(function (data) {
                     min: 2010,
                     max: 2020,
                     ticks: {
-                        callback: function (value, index, values) {
-                            return value.toString();
+                            callback: function(value) {
+                              if (Math.floor(value) === value) {
+                                return value
+                              }
                         },
                         font: {
                             size: 16,

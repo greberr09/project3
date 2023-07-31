@@ -19,6 +19,7 @@ btn.addEventListener("click", function() {
         }
     });
 
+
 });
 
 // Building Choropleth Map
@@ -175,9 +176,11 @@ d3.json(popUrl).then(function(data) {
 			L.DomEvent
 				.disableClickPropagation(azoom)
 				.addListener(azoom, 'click', function() {
-					map.flyTo(map.options.center, map.options.zoom);
+					map.setView(map.options.center, map.options.zoom);
+                    document.getElementById('zip').value=null;
 				},azoom);
 			return azoom;
+            
 		};
 	return control;
 }())
@@ -250,8 +253,8 @@ d3.json(stationUrl).then(function(stationData) {
 
     // Set overlays (charger types)
     let overlays = {
-        "Tesla Chargers": teslaGroup,
         "J1772 Chargers": jGroup,
+        "Tesla Chargers": teslaGroup,
         "Chademo Chargers": chademoGroup,
         "NEMA Chargers": nemaGroup
     };

@@ -28,8 +28,8 @@ d3.json(url2).then(function(data) {
     data: {
         labels: years,
         datasets: [{
-        backgroundColor: '#6baed6',
-        borderColor: '#4292c6',  
+        backgroundColor: '#d7301f',
+        borderColor: '#990000',  
         label: 'Oil Displacement Millions of Barrels',
         yAxisID: 'A',
         data: oil
